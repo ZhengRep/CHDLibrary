@@ -1,0 +1,36 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/MyCode/index/consult/consult",
+          "pathName": "pages/MyCode/index/consult/consult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

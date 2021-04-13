@@ -1,0 +1,40 @@
+{
+    "light": {
+      "navigationBarTextStyle": "black",
+      "navigationBarBackgroundColor": "#F7F7F7",
+      "backgroundColor": "#F7F7F7",
+  
+      "tabBarColor": "#7A7E83",
+      "tabBarSelectedColor": "#3cc51f",
+      "tabBarBorderStyle": "black",
+      "tabBarBackgroundColor": "#F7F7F7",
+  
+      "iconPathIndex": "images/Tabbar/Index.png",
+      "selectedIconPathIndex": "images/Tabbar/Index_HL.png",
+      "iconPathMessage": "images/Tabbar/Message.png",
+      "selectedIconPathMessage": "images/Tabbar/Message_HL.png",
+      "iconPathMe": "images/Tabbar/Me.png",
+      "selectedIconPathMe": "images/Tabbar/Me_HL.png",
+  
+      "backgroundTextStyle": "dark"
+    },
+    "dark": {
+      "navigationBarTextStyle": "white",
+      "navigationBarBackgroundColor": "#1F1F1F",
+      "backgroundColor": "#1F1F1F",
+  
+      "tabBarColor": "#FFFFFFCC",
+      "tabBarSelectedColor": "#51A937",
+      "tabBarBorderStyle": "white",
+      "tabBarBackgroundColor": "#1F1F1F",
+  
+      "iconPathIndex": "images/Tabbar/Index_dark.png",
+      "selectedIconPathIndex": "images/Tabbar/Index_HL.png",
+      "iconPathMessage": "images/Tabbar/Message_dark.png",
+      "selectedIconPathMessage": "images/Tabbar/Message_HL.png",
+      "iconPathMe": "images/Tabbar/Me_dark.png",
+      "selectedIconPathMe": "images/Tabbar/Me_HL.png",
+  
+      "backgroundTextStyle": "light"
+    }
+  }

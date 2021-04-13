@@ -1,0 +1,5 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <!-- 搜索框 -->
+    <mp-searchbar  bindselectresult="selectResult" placeholder="书名 作者" search="{{search}}"></mp-searchbar>
+
+</view>

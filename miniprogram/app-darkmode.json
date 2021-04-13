@@ -1,0 +1,33 @@
+{
+    "window": {
+      "navigationBarTextStyle": "white",
+      "navigationBarBackgroundColor": "#191919",
+      "backgroundColor": "#191919"
+    },
+    "tabBar": {
+      "color": "#FCFCFC",
+      "selectedColor": "#51A937",
+      "borderStyle": "white",
+      "backgroundColor": "#191919",
+      "list": [
+        {
+            "pagePath": "pages/MyCode/index/index",
+            "iconPath": "@iconPathIndex",
+            "selectedIconPath": "@selectedIconPathIndex",
+            "text": "首页"
+          },
+          {
+            "pagePath": "pages/MyCode/Message/Message",
+            "iconPath": "@iconPathMessage",
+            "selectedIconPath": "@selectedIconPathMessage",
+            "text": "讯息"
+          },
+          {
+            "pagePath": "pages/MyCode/Me/Me",
+            "iconPath": "@iconPathMe",
+            "selectedIconPath": "@selectedIconPathMe",
+            "text": "我"
+          }
+      ]
+    }
+  }

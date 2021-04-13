@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/MyCode/index/index",
+    "pages/MyCode/Me/Me",
+    "pages/MyCode/Message/Message",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/MyCode/index/book/book",
+    "pages/MyCode/index/consult/consult",
+    "pages/MyCode/index/guide/guide",
+    "pages/MyCode/index/search/search",
+    "pages/MyCode/index/seat/seat",
+    "pages/MyCode/index/share/share"
+  ],
+  "window": {
+    "navigationBarTextStyle": "@navigationBarTextStyle",
+    "navigationBarTitleText": "演示",
+    "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
+    "backgroundColor": "@backgroundColor"
+  },
+  "tabBar": {
+    "color": "@tabBarColor",
+    "selectedColor": "@tabBarSelectedColor",
+    "borderStyle": "@tabBarBorderStyle",
+    "backgroundColor": "@tabBarBackgroundColor",
+    "list": [
+      {
+        "pagePath": "pages/MyCode/index/index",
+        "iconPath": "@iconPathIndex",
+        "selectedIconPath": "@selectedIconPathIndex",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/MyCode/Message/Message",
+        "iconPath": "@iconPathMessage",
+        "selectedIconPath": "@selectedIconPathMessage",
+        "text": "讯息"
+      },
+      {
+        "pagePath": "pages/MyCode/Me/Me",
+        "iconPath": "@iconPathMe",
+        "selectedIconPath": "@selectedIconPathMe",
+        "text": "我"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "cloud": true,
+  "sitemapLocation": "sitemap.json",
+  "themeLocation": "demo.theme.json",
+  "darkmode": true,
+  "resizable": true,
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  }
+}
