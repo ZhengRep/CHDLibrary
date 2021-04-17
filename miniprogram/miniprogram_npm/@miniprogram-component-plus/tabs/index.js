@@ -82,12 +82,12 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 6:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,99 +100,45 @@ Component({
         multipleSlots: true
     },
     properties: {
-        vtabs: { type: Array, value: [] },
-        tabBarClass: { type: String, value: '' },
+        tabs: { type: Array, value: [] },
+        tabClass: { type: String, value: '' },
+        swiperClass: { type: String, value: '' },
         activeClass: { type: String, value: '' },
-        tabLineColor: { type: String, value: '#3cc51f' },
-        tabInactiveTextColor: { type: String, value: '#000000' },
+        tabUnderlineColor: { type: String, value: '#07c160' },
         tabActiveTextColor: { type: String, value: '#000000' },
-        tabInactiveBgColor: { type: String, value: '#eeeeee' },
-        tabActiveBgColor: { type: String, value: '#ffffff' },
+        tabInactiveTextColor: { type: String, value: '#000000' },
+        tabBackgroundColor: { type: String, value: '#ffffff' },
         activeTab: { type: Number, value: 0 },
-        animation: { type: Boolean, value: true }
+        swipeable: { type: Boolean, value: true },
+        animation: { type: Boolean, value: true },
+        duration: { type: Number, value: 500 }
     },
     data: {
-        currentView: 0,
-        contentScrollTop: 0,
-        _heightRecords: [],
-        _contentHeight: {}
+        currentView: 0
     },
     observers: {
         activeTab: function activeTab(_activeTab) {
-            this.scrollTabBar(_activeTab);
-        }
-    },
-    relations: {
-        '../vtabs-content/index': {
-            type: 'child',
-            linked: function linked(target) {
-                var _this = this;
-
-                target.calcHeight(function (rect) {
-                    _this.data._contentHeight[target.data.tabIndex] = rect.height;
-                    if (_this._calcHeightTimer) {
-                        clearTimeout(_this._calcHeightTimer);
-                    }
-                    _this._calcHeightTimer = setTimeout(function () {
-                        _this.calcHeight();
-                    }, 100);
-                });
-            },
-            unlinked: function unlinked(target) {
-                delete this.data._contentHeight[target.data.tabIndex];
-            }
+            var len = this.data.tabs.length;
+            if (len === 0) return;
+            var currentView = _activeTab - 1;
+            if (currentView < 0) currentView = 0;
+            if (currentView > len - 1) currentView = len - 1;
+            this.setData({ currentView: currentView });
         }
     },
     lifetimes: {
-        attached: function attached() {}
+        created: function created() {}
     },
     methods: {
-        calcHeight: function calcHeight() {
-            var length = this.data.vtabs.length;
-            var _contentHeight = this.data._contentHeight;
-            var _heightRecords = [];
-            var temp = 0;
-            for (var i = 0; i < length; i++) {
-                _heightRecords[i] = temp + (_contentHeight[i] || 0);
-                temp = _heightRecords[i];
-            }
-            this.data._heightRecords = _heightRecords;
-        },
-        scrollTabBar: function scrollTabBar(index) {
-            var len = this.data.vtabs.length;
-            if (len === 0) return;
-            var currentView = index < 6 ? 0 : index - 5;
-            if (currentView >= len) currentView = len - 1;
-            this.setData({ currentView: currentView });
-        },
         handleTabClick: function handleTabClick(e) {
-            var _heightRecords = this.data._heightRecords;
             var index = e.currentTarget.dataset.index;
-            var contentScrollTop = _heightRecords[index - 1] || 0;
+            this.setData({ activeTab: index });
             this.triggerEvent('tabclick', { index: index });
-            this.setData({
-                activeTab: index,
-                contentScrollTop: contentScrollTop
-            });
         },
-        handleContentScroll: function handleContentScroll(e) {
-            var _heightRecords = this.data._heightRecords;
-            if (_heightRecords.length === 0) return;
-            var length = this.data.vtabs.length;
-            var scrollTop = e.detail.scrollTop;
-            var index = 0;
-            if (scrollTop >= _heightRecords[0]) {
-                for (var i = 1; i < length; i++) {
-                    if (scrollTop >= _heightRecords[i - 1] && scrollTop < _heightRecords[i]) {
-                        index = i;
-                        break;
-                    }
-                }
-            }
-            if (index !== this.data.activeTab) {
-                this.triggerEvent('change', { index: index });
-                this.setData({ activeTab: index });
-            }
+        handleSwiperChange: function handleSwiperChange(e) {
+            var index = e.detail.current;
+            this.setData({ activeTab: index });
+            this.triggerEvent('change', { index: index });
         }
     }
 });

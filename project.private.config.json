@@ -29,6 +29,11 @@
           "pathName": "pages/MyCode/index/seat/seat",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/MyCode/Message/Message",
+          "pathName": "pages/MyCode/Message/Message",
+          "scene": null
         }
       ]
     }
