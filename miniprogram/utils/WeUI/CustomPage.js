@@ -1,5 +1,4 @@
 import themeMixin from './theme'
-
 const CustomPage = function (options) {
 	return Page(
 		Object.assign({}, options, {

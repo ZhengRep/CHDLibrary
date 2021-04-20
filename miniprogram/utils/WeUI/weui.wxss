@@ -1,8 +1,4 @@
-/*!
- * WeUI v2.3.0 (https://github.com/weui/weui-wxss)
- * Copyright 2020 Tencent, Inc.
- * Licensed under the MIT license
- */
+
  [data-weui-theme=light],
  page {
    --weui-BTN-DISABLED-FONT-COLOR: rgba(0, 0, 0, .2)

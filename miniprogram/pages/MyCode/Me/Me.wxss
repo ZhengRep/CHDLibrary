@@ -1,1 +1,63 @@
-/* miniprogram/pages/MyCode/Me/Me.wxss */
+@import '../../../utils/WeUI/common.wxss';
+page{
+    --white: #ffffff;
+  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+}
+
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}
+
+.info_wrap{
+    margin: 10px 5px;
+    padding: 10px 5px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}  
+.user-avatar {
+    width: 140rpx;
+    height: 140rpx;
+    overflow: hidden;
+    border-radius: 70rpx;
+    background-color: #aaa;
+}
+
+.user_wrap_phone{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.phone{
+    text-align: left;
+    padding-left: 10px;
+    /* padding-top: 5px; */
+}
+
+.user_wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.user-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.info-bd {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+  
+  .bg-gradual-blue {
+	background-image: var(--gradualBlue);
+	color: var(--white);
+}

@@ -12,14 +12,13 @@
 
 .weui-tabs-swiper {
     width: 100%;
-    height: 100%;
-
+    /* height: 100%; */
     background-color: var(--weui-BG-2);
-
+    height: 350px;
 }
 
 .tab-content {
-    /* height: 100px; */
+    /* height: 400px; */
     width: 100%;
     display: flex;
     flex-direction: column;

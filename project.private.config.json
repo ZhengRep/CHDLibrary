@@ -33,6 +33,12 @@
         {
           "name": "pages/MyCode/Message/Message",
           "pathName": "pages/MyCode/Message/Message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/Me",
+          "pathName": "pages/MyCode/Me/Me",
           "scene": null
         }
       ]

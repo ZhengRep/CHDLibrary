@@ -1,10 +1,12 @@
-// miniprogram/pages/MyCode/Me/Me.js
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    is_bind:true,
 
   },
 

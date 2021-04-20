@@ -1,6 +1,7 @@
 import CustomPage from '../../../utils/WeUI/CustomPage'
 
 CustomPage({
+ 
   data: {
     tabs: [],
     activeTab: 0,

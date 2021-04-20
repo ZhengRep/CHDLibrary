@@ -1,8 +1,8 @@
 {
   "disableScroll": true,
 
+  "navigationBarTitleText": "讯息",
   "usingComponents": {
     "mp-tabs": "@miniprogram-component-plus/tabs"
-  },
-  "navigationBarTitleText": "讯息"
+  }
 }
