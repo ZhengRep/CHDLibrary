@@ -1,0 +1,65 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <form>
+        <view class="">
+            <image mode="aspectFit" 
+            src="../../../images/Other/login.png" 
+            style="display:block;margin:50rpx auto;width:500rpx;height:500rpx;">
+            </image>
+        </view>
+        <view class="input-wrap">
+            <view class="cu-item">
+                <view class="id-pswd cu-form-group">
+                    <view class="title">
+                        <text class='cuIcon-profile text-black' style="margin-right:3px"></text> 学号
+                    </view>
+                    <view class="id-item">
+                        <input class="input-border {{userid_focus ? 'active' : ''}}"
+                            id="userid" 
+                            type="number"
+                            maxlength="12" 
+                            cursor-spacing="30" 
+                            bindinput="useridInput" 
+                            bindfocus="inputFocus" 
+                            bindblur="inputBlur" 
+                            placeholder="请输入学号/工号  ">
+                        </input>
+                    </view>
+                </view>
+            </view>
+            <view class="cu-item">
+                <view class="id-pswd cu-form-group">
+                    <view class="title">
+                        <text class='cuIcon-lock text-black' style="margin-right:3px"></text> 密码
+                    </view>
+                    <view >
+                        <input 
+                            class="id-item input-border {{passwd_focus ? 'active' : ''}}" 
+                            id="passwd" 
+                            cursor-spacing="30" 
+                            cursor-spacing="30" 
+                            password="true" 
+                            placeholder="请输入信息门户密码"
+                            bindinput="passwdInput" 
+                            bindfocus="inputFocus" 
+                            bindblur="inputBlur">
+                         </input>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </form>
+    <view class="button-wrap">
+        <button 
+        class='' 
+        type="primary"
+        bindtap="check">
+        验证
+        </button>
+    </view>
+    <view class="footer">
+        <view class="footer-item">
+            <text class="cuIcon-safe text-grey"></text>
+            <text class="text-grey">数据来源：长安大学大数据平台</text>
+        </view>
+    </view>
+</view>

@@ -1,2 +1,4 @@
 <contact-button size="40" session-from="weapp"></contact-button>
 <button open-type="contact" bindcontact="handleContact"></button>
+
+<button type="primary" open-type="contact" bindcontact="handleContact" show-message-card="{{true}}" send-message-title="临时会话">打开客服会话</button>

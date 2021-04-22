@@ -1,0 +1,58 @@
+/**登录动画**/
+@import '../../../utils/colorui/icon.wxss';
+@import '../../../utils/WeUI/common.wxss';
+
+.page{
+  background-color: var(--weui-BG-2);
+  height: 100%;
+}
+.input-wrap{
+  width: 80%;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: column;
+}
+.id-item{
+  margin-left: 10px;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  /* width: 40px; */
+}
+
+.id-pswd{
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.button-wrap{
+  margin-top: 100px;
+}
+
+
+  .cu-form-group .title{
+    font-size:16px;
+  }
+  .cu-form-group input{
+    /* display:inline-block; */
+    height: 20px;
+    font-size:16px;
+    border-bottom: 0.5px solid;
+    width: 200px;
+  }
+ 
+  .footer {
+    margin-top: 100px;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  
+
+

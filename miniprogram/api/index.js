@@ -70,14 +70,26 @@ const request = (url, method, data) => {
       }
       return request('/wxuser/bind', 'post', utils.key(formData))
     },
-    // 获取首页banner 
-    getIndexBanner: () => {
-      return request('/index/banner_list', 'get')
-    },
-    // 获取首页app
-    getIndexApp: (token) => {
-      return request('/index/app_list', 'post', {
-        token: token
-      })
-    },
+    
+    /**
+   * 个人信息模块
+   */
+  // 绑定手机号码
+  getPhoneNumber: (token, iv, encryptedData) => {
+    let formData = {
+      token: token,
+      iv: iv,
+      encryptedData: encryptedData
+    }
+    return request('/wxuser/wxmobile', 'post', utils.key(formData))
+  },
+    // 保存用户信息
+  setUserInfo: (token, iv, encryptedData) => {
+    let formData = {
+      token: token,
+      iv: iv,
+      encryptedData: encryptedData
+    }
+    return request('/wxuser/userInfo', 'post', utils.key(formData))
+  },
     }

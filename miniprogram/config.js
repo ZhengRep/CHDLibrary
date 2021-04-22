@@ -11,11 +11,14 @@ const config = {
 
   // 云开发环境 ID
   envId: 'cloud1-4ggmc6wo7b1e8647',
-  // envId: 'test-f0b102',
 
-  // 云开发-存储 示例文件的文件 ID
-  //demoImageFileId: '',
-  //demoVideoFileId: '',
+  env:"server",
+  api_build: "https://yiban.chd.edu.cn/api/miniapp",
+  api_dev: {
+    server: "https://yiban.chd.edu.cn/api/miniapp"
+  },
+  qrcode_genarate_url:""
 }
 
 module.exports = config
+

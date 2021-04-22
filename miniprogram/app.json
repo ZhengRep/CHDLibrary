@@ -20,7 +20,8 @@
     "pages/MyCode/index/guide/guide",
     "pages/MyCode/index/search/search",
     "pages/MyCode/index/seat/seat",
-    "pages/MyCode/index/share/share"
+    "pages/MyCode/index/share/share",
+    "pages/MyCode/login/login"
   ],
   "window": {
     "navigationBarTextStyle": "@navigationBarTextStyle",
