@@ -1,5 +1,5 @@
-const WXAPI = require('../api/index.js')
-const utils = require('../utils/util')
+const WXAPI = require('../api/index')
+const utils = require('./util')
 const app = getApp()
 // 检测登录状态，返回 true / false
 async function checkHasLogined() {
@@ -14,7 +14,7 @@ async function checkHasLogined() {
   })
   // 若要启用token 则需要在此进行token有效性验证，在无安全性要求前提下，不需要
   const checkTokenRes = await checkToken(token)
-  //console.log("[page:auth checkToken]result token:",checkTokenRes)
+  console.log("[page:auth checkToken]result token:",checkTokenRes)
   if (checkTokenRes.code != 1) {
     wx.removeStorageSync('token')
     return false

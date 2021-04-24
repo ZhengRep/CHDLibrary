@@ -70,6 +70,7 @@ CustomPage({
   },
   check: function() {
     let _this = this
+    console.log('Identify，',app.globalData.token);
     let data = {}
     if (!_this.data.userid || !_this.data.passwd) {
       app.showErrorModal('账号及密码不能为空', '提醒');
@@ -84,6 +85,7 @@ CustomPage({
   bind: function() {
     let that = this
     app.showToast('身份验证中...', 'loading')
+    console.log('Identify');
     WXAPI.bind(app.globalData.token, that.data.userid, that.data.passwd)
       .then(res => {
         if(res.code ===1){

@@ -1,6 +1,6 @@
 //封装网络请求
-const CONFIG = require('../config.js')
-const utils = require('../utils/util.js')
+const CONFIG = require('../config')
+const utils = require('../utils/util')
 const request = (url, method, data) => {
   const system = wx.getSystemInfoSync()
   const _url = system.brand !== 'devtools' ? CONFIG.api_build : CONFIG.api_dev[CONFIG.env]
@@ -47,6 +47,7 @@ const request = (url, method, data) => {
  module.exports = {
     request,
     init: (token) => {
+      console.log('init token');
       return request('/wxuser/init_token', 'post', {
         token: token
       })

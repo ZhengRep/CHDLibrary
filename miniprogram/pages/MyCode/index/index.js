@@ -7,6 +7,7 @@ Page({
     swiperList: [{
       id: 0,
       type: 'image',
+      userInfo: wx.getStorageSync('_user'),//app.globalData._user,
       //后期考虑云数据库，考虑到教师端的操作
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
     }, {
@@ -70,7 +71,45 @@ Page({
   },
   onLoad() {
     this.towerSwiper('swiperList');
-    
+    const that = this 
+    // 登录前置检查
+    //await app.loginFunc(app.globalData.token)
+    // console.log('[page index] onload globalData:',app.globalData)
+    if (!app.globalData.token){
+      app.loginFunc()
+    }
+    if (app.globalData.is_bind !== true){
+      //未绑定门户认证，先跳转绑定页面
+      app.showToast('请先进行身份认证')
+      setTimeout(()=>{
+        wx.navigateTo({
+          url: '/pages/more/login',
+        })
+      },1000)
+    }
+  },
+  
+
+  go: function(e) {
+    //console.log('[page:index] globalData:',app.globalData)
+    const that = this
+
+    // 1.判断当前应用是否可用，如果不可用，弹出不可用原因
+    const item = e.currentTarget.dataset.item
+    if (!item.usable) {
+      app.showToast(item.errMsg)
+      return
+    }
+
+    // 2.当前应用要求绑定，而用户为绑定，则弹出提示，并导航到绑定界面
+    if (!item.permissions.unauthorized && !app.globalData.is_bind) {
+      console.log('需要信息门户认证才能访问')
+      app.showToast('需要信息门户认证才能访问')
+      wx.navigateTo({
+        url: 'pages/MyCode/login/login'
+      })
+      return
+    }
   },
   
   // 轮播图

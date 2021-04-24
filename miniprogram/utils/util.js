@@ -1,94 +1,67 @@
-function formatTime(time) {
-  if (typeof time !== 'number' || time < 0) {
-    return time
-  }
-
-  const hour = parseInt(time / 3600, 10)
-  time %= 3600
-  const minute = parseInt(time / 60, 10)
-  time = parseInt(time % 60, 10)
-  const second = time
-
-  return ([hour, minute, second]).map(function (n) {
-    n = n.toString()
-    return n[1] ? n : '0' + n
-  }).join(':')
-}
-
-function formatLocation(longitude, latitude) {
-  if (typeof longitude === 'string' && typeof latitude === 'string') {
-    longitude = parseFloat(longitude)
-    latitude = parseFloat(latitude)
-  }
-
-  longitude = longitude.toFixed(2)
-  latitude = latitude.toFixed(2)
-
-  return {
-    longitude: longitude.toString().split('.'),
-    latitude: latitude.toString().split('.')
-  }
-}
-
-function fib(n) {
-  if (n < 1) return 0
-  if (n <= 2) return 1
-  return fib(n - 1) + fib(n - 2)
-}
-
-function formatLeadingZeroNumber(n, digitNum = 2) {
-  n = n.toString()
-  const needNum = Math.max(digitNum - n.length, 0)
-  return new Array(needNum).fill(0).join('') + n
-}
-
-function formatDateTime(date, withMs = false) {
+const formatTime = (date,type) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-  const ms = date.getMilliseconds()
-
-  let ret = [year, month, day].map(value => formatLeadingZeroNumber(value, 2)).join('-') +
-    ' ' + [hour, minute, second].map(value => formatLeadingZeroNumber(value, 2)).join(':')
-  if (withMs) {
-    ret += '.' + formatLeadingZeroNumber(ms, 3)
+  
+  let timeStr = ''
+  switch(type){
+    case 'YYYY-MM-DD':
+      timeStr = [year, month, day].map(formatNumber).join('-')
+      break
+    case 'hh:mm':
+      timeStr = [hour, minute].map(formatNumber).join(':')
+      break
+    default:
+      timeStr = [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+      break
   }
-  return ret
+  return timeStr
 }
 
-function compareVersion(v1, v2) {
-  v1 = v1.split('.')
-  v2 = v2.split('.')
-  const len = Math.max(v1.length, v2.length)
-
-  while (v1.length < len) {
-    v1.push('0')
-  }
-  while (v2.length < len) {
-    v2.push('0')
-  }
-
-  for (let i = 0; i < len; i++) {
-    const num1 = parseInt(v1[i], 10)
-    const num2 = parseInt(v2[i], 10)
-
-    if (num1 > num2) {
-      return 1
-    } else if (num1 < num2) {
-      return -1
-    }
-  }
-
-  return 0
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 
+//判断是否为纯粹对象
+function isPlainObject(obj) {
+  if (!obj || obj.toString() !== "[object Object]" || obj.nodeType || obj.setInterval) {
+    return false;
+  }
+  if (obj.constructor && !obj.hasOwnProperty("constructor") && !obj.constructor.prototype.hasOwnProperty("isPrototypeOf")) {
+    return false;
+  }
+  for (var key in obj) { }
+  return key === undefined || obj.hasOwnProperty(key);
+}
+function cloneObj(obj) {
+  if (!isPlainObject(obj)) { return false; }
+  return JSON.parse(JSON.stringify(obj));
+}
+
+//md5&base64
+const md5 = require('./md5.min.js'), base64 = require('./base64.min.js'),
+  sign = function (data) {
+    var _data = cloneObj(data);
+    _data['\x74\x6f\x6b\x65\x6e'] = base64.decode(getApp()['\x5f\x74']);
+    return md5(JSON.stringify(_data));
+  },
+  key = function (data) {
+    if (!isPlainObject(data)) { return false; }
+    data.timestamp = parseInt(new Date().getTime().toString().substr(0, 10));
+
+    data.sign = sign(data);
+
+    return {
+      key: base64.encode(JSON.stringify(data))
+    };
+  }
 module.exports = {
-  formatTime,
-  formatLocation,
-  fib,
-  formatDateTime,
-  compareVersion
+  formatTime: formatTime,
+  md5: md5,
+  base64: base64,
+  key: key
 }
