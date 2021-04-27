@@ -66,8 +66,6 @@
   "themeLocation": "demo.theme.json",
   "darkmode": true,
   "resizable": true,
-  "style": "v2",
-  "useExtendedLib": {
-    "weui": true
-  }
+  "style": "v2"
+ 
 }

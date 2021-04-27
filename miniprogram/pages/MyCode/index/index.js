@@ -1,6 +1,6 @@
 const { GRID_DEMO_URL } = getApp().globalData
 const app = getApp()
-
+const WXAPI = require('../../../api/index')
 Page({
   data: {
     cardCur: 0,
@@ -87,6 +87,10 @@ Page({
         })
       },1000)
     }
+
+    
+   
+
   },
   
 

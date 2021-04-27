@@ -1,24 +1,33 @@
 //封装网络请求
 const CONFIG = require('../config')
 const utils = require('../utils/util')
-const request = (url, method, data) => {
+const request = (url, method, data,flag) => {
   const system = wx.getSystemInfoSync()
-  const _url = system.brand !== 'devtools' ? CONFIG.api_build : CONFIG.api_dev[CONFIG.env]
-  // const _url = CONFIG.api_dev[CONFIG.env]
-  return new Promise((resolve, reject) => {
+  let _url='';
+  if(flag){
+      _url = CONFIG.api_buildEx;
+    }
+    else{
+      _url = CONFIG.api_build;
+    }
+  return new Promise((resolve, reject,flag) => {
     wx.request({
-      url: _url + url,
+      url:_url + url,
       method: method,
       data: data,
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success(res) {
+        // console.log(res);
         if (res.statusCode !== 200) {
+          console.log('api 网络失败',res.statusCode);
           reject({
             msg: '请求失败',
             statusCode: res.statusCode
           })
+        }else if(res.statusCode == 200){
+          resolve(res.data)
         }
         // 小程序项目中 返回值code为1 才为正确
         if (res.data.code === 1) {
@@ -50,17 +59,18 @@ const request = (url, method, data) => {
       console.log('init token');
       return request('/wxuser/init_token', 'post', {
         token: token
-      })
+      },false)
     },
     checkToken: (token) => {
       return request('/wxuser/check_token', 'post', {
         token
-      })
+      },false)
     },
     login: (code) => {
+      console.log('api login start');
       return request('/wxuser/login', 'post', {
         code: code
-      })
+      },false)
     },
     // 绑定门户账号
     bind: (token, stuid, passwd) => {
@@ -69,7 +79,7 @@ const request = (url, method, data) => {
         stuid: stuid,
         passwd: passwd
       }
-      return request('/wxuser/bind', 'post', utils.key(formData))
+      return request('/wxuser/bind', 'post', utils.key(formData),false)
     },
     
     /**
@@ -82,7 +92,7 @@ const request = (url, method, data) => {
       iv: iv,
       encryptedData: encryptedData
     }
-    return request('/wxuser/wxmobile', 'post', utils.key(formData))
+    return request('/wxuser/wxmobile', 'post', utils.key(formData),false)
   },
     // 保存用户信息
   setUserInfo: (token, iv, encryptedData) => {
@@ -91,6 +101,11 @@ const request = (url, method, data) => {
       iv: iv,
       encryptedData: encryptedData
     }
-    return request('/wxuser/userInfo', 'post', utils.key(formData))
+    return request('/wxuser/userInfo', 'post', utils.key(formData),false)
   },
-    }
+
+  //书籍查询
+  SearchBook:(KeyWord)=>{
+    return request('/searchbook?title='+KeyWord,'post',null,true)
+  },
+}

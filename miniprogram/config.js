@@ -14,8 +14,10 @@ const config = {
 
   env:"server",
   api_build: "https://yiban.chd.edu.cn/api/miniapp",
+  api_buildEx: "https://yiban.chd.edu.cn/api/library",
   api_dev: {
-    server: "https://yiban.chd.edu.cn/api/miniapp"
+    server: "https://yiban.chd.edu.cn/api/miniapp",
+    serverEX:"https://yiban.chd.edu.cn/api/library"
   },
   qrcode_genarate_url:""
 }

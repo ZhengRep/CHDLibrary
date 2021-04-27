@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+    "mp-searchbar": "@miniprogram-component-plus/searchbar/searchbar"
   },
   "navigationBarTitleText": "图书查询"
 }

@@ -1,4 +1,5 @@
 // miniprogram/pages/MyCode/index/search/search.js
+const WXAPI = require('../../../../api/index')
 Page({
 
   data: {
@@ -14,13 +15,34 @@ Page({
     this.setData({
       search: this.search.bind(this)
   })
+  // WXAPI.SearchBook('你好').then(res=>{
+  //   console.log(res);
+  // }).catch(err=>{
+  //   console.log('request fail');
+  //   app.showErrorModal(err.msg)
+  // })
+
+
   },
   
   search: function (value) {
     return new Promise((resolve, reject) => {
         if (this.data.i % 2 === 0) {
+          console.log(value);
             setTimeout(() => {
-                resolve([{text: '搜索结果', value: 1}, {text: '搜索结果2', value: 2}])
+                resolve(
+                  //网络请求测试
+                  WXAPI.SearchBook(value).then(res=>{
+                    console.log(res);
+                    return res;
+                  }).catch(err=>{
+                    console.log('request fail');
+                    app.showErrorModal(err.msg)
+                  })
+                  
+                  
+                //  [{text: '搜索结果', value: 1}, {text: '搜索结果2', value: 2}]
+                 )
             }, 200)
         } else {
             setTimeout(() => {
