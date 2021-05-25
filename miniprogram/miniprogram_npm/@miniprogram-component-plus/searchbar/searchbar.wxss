@@ -1,1 +1,27 @@
 .weui-search-bar__label text{display:inline-block;font-size:14px;vertical-align:middle}
+
+@media (prefers-color-scheme: light) {
+   .weui-search-bar {
+      background-color: #F7F7F7;
+    }
+  }
+@media (prefers-color-scheme: dark) {
+   .weui-search-bar {
+      background-color: #1F1F1F;
+    }
+  }
+  .cell-scroll{
+    height: calc(100vh - 56px);
+  }
+  .res-body{
+    height: calc(100vh - 56px);
+  }
+  .top50{
+    font-size: 16px;
+    padding-left:16px;
+    line-height: 30px;
+    align-items: center;
+  }
+  .cell-scroll-top{
+    height: calc(100vh - 86px);
+  }

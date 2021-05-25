@@ -103,11 +103,18 @@ Component({
         vtabs: { type: Array, value: [] },
         tabBarClass: { type: String, value: '' },
         activeClass: { type: String, value: '' },
-        tabLineColor: { type: String, value: '#ff0000' },
+        tabLineColor: { type: String, value: '#51A937' },
         tabInactiveTextColor: { type: String, value: '#000000' },
-        tabActiveTextColor: { type: String, value: '#ff0000' },
+        tabActiveTextColor: { type: String, value: '#51A937' },
         tabInactiveBgColor: { type: String, value: '#eeeeee' },
         tabActiveBgColor: { type: String, value: '#ffffff' },
+
+        tabLineColorDark: { type: String, value: '#51A937' },
+        tabInactiveTextColorDark: { type: String, value: '#ffffff' },
+        tabActiveTextColorDark: { type: String, value: '#ffffff' },
+        tabInactiveBgColorDark: { type: String, value: '#000000' },
+        tabActiveBgColorDark: { type: String, value: '#191919' },
+
         activeTab: { type: Number, value: 0 },
         animation: { type: Boolean, value: true }
     },

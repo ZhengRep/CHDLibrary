@@ -8,17 +8,107 @@
     bindchange="onChange"
     activeClass="tab-bar-title__selected"
   > 
-  <block wx:for="{{tabs}}" wx:key="title">
+
+
+    <block wx:for="{{tabs}}" wx:key="title" wx:for-index="index">
       <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick">
-        <image src="{{item.img}}" mode="widthFix"></image>
-        <view class="item-title">
-          {{item.title2}}
-        </view>
-        <view class="item-desc">
-          {{item.desc}}
-        </view>
-      </view>
+         <scroll-view
+          scroll-y class="scroll-item"
+          refresher-threshold="{{80}}"
+           refresher-triggered="{{isTriggered}}"
+           bindscrolltolower="handleToLower_{{index}}"
+           refresher-enabled="true"
+           bindrefresherrefresh="toRefresh_{{index}}"
+        >
+            <view wx:if='{{index==0}}'>
+          <view wx:for="{{item.info}}" wx:key="infoindex" wx:for-item="infoitem" wx:for-index="infoindex">
+
+            
+            
+              <view class="cu-card dynamic no-card">
+                <!-- 信息展示 -->
+                  <view class="cu-maninfo">
+                    <image class="cu-avatar" mode="aspectFill" src="{{infoitem.shareManInfo.avatarUrl}}" />
+                    <view class="content flex-sub">
+                      <view class="cu-nick">{{infoitem.shareManInfo.nickName}}</view>
+                      <view class="cu-time">
+                        {{infoitem.shareContent.time}}
+                      </view>
+                    </view>
+                  </view>
+              
+                  <!-- 分享内容 -->
+                  <view class="share-content">
+                    <view class="author">
+                      <text class="self-text"  decode="{{true}}">《{{infoitem.shareContent.bookName}}》&emsp;{{infoitem.shareContent.author}}</text>
+                    </view>              
+                    <view class="comment">
+                      <text class="self-text" wx:if="{{infoitem.shareContent.comment.length>20}}" decode="{{true}}">&emsp;&emsp;{{infoitem.shareContent.comment}}</text>
+                      <text class="self-text"  wx:else decode="{{true}}">{{infoitem.shareContent.comment}}</text>
+                    </view>
+                  </view>
+                  <!-- 照片 -->
+                  <view class="weui-flex" style="margin-bottom:30px">
+                    <view class="image-wrap {{infoitem.sharePic.length==2?'wrap2':''}} {{infoitem.sharePic.length==3?'wrap3':''}}"   wx:for="{{infoitem.sharePic}}" wx:for-item="itempic" wx:for-index="picindex" wx:key="*this">
+                      <image bindtap='preview' mode="aspectFill" data-cur="{{infoitem.sharePic[picindex]}}" data-piclist="{{infoitem.sharePic}}" src="{{itempic}}" />
+                    </view>
+                  </view>
+
+                  <!-- 分享反馈 -->
+                  <!-- <view class="text-gray text-sm text-right padding" style="margin-bottom:20px">
+                    <text class="cuIcon-appreciatefill margin-lr-xs"></text> 20
+                    <text class="cuIcon-messagefill margin-lr-xs"></text> 30
+                  </view> -->
+                  <!-- <view class="cu-list menu-avatar comment solids-top">
+                    <view class="cu-item">
+                      <view class="content">
+                        <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
+                          <view class="flex">
+                            <view>凯尔：</view>
+                            <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view> -->
+                
+              </view>
+            </view>
+            </view>
+            
+
+
+            <view wx:else>
+              <mp-cell class="result" bindtap="toMessDetail" body-class="weui-cell_primary" data-tabsIndex="{{index}}" data-detailIndex="{{infoItemIndex}}" wx:for-item='infoitem' wx:for-index="infoItemIndex" wx:for="{{item.info}}" wx:key="infoitem">
+              <!-- <mp-cell class="result" bindtap="toMessDetail" body-class="weui-cell_primary" data-tabsIndex="{{index}}" data-detailIndex="{{infoItemIndex}}" wx:for-item='infoitem' wx:for-index="infoItemIndex" wx:for="{{item.info}}" wx:key="infoitem"> -->
+                  <view >
+                    <view>{{infoitem.title}}......</view>
+                    <view style="font-size:14px">{{infoitem.time}}</view>
+                  </view>
+              </mp-cell>
+            </view>
+
+
+
+
+          <!-- </view> -->
+
+          
+        <view >
+          <view>
+            <view class="weui-loadmore" wx:if="{{haveLoad}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </view>
+          <view class="weui-loadmore weui-loadmore_line" wx:if="{{index==1||index==4}}">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+          </view>
+        </view>  
+        </scroll-view>
+     </view>
     </block>
   </mp-tabs>
 </view> 
+
 

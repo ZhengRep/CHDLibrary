@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"",
+  "usingComponents": {
+    "mp-loading": "@miniprogram-component-plus/loading/loading"
+  }
+}

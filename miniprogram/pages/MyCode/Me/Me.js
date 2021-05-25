@@ -13,40 +13,36 @@ CustomPage({
     is_bind:false,
     is_teacher: false,
     user: undefined,
+    
 
     list:[
-      {
-        id: 'administrator',
-        name: '管理员',
-        open: false,
-        pages: [
-          { zh: '发布公告', url: 'telescopic/telescopic' },
-          { zh: '替换图片', url: 'linebreak/linebreak' },
-          { zh: '书籍处理', url: 'sidenavigation/sidenavigation' },
-          { zh: '问题处理', url: 'pagination/pagination' },
-      ]
-    },
+    //   {
+    //     id: 'administrator',
+    //     name: '管理员',
+    //     open: false,
+    //       openType:'admin',
+    //       pages: [
+    //       { zh: '日常事务', url: 'telescopic/telescopic' },
+    //       { zh: '运营数据', url: 'linebreak/linebreak' },
+    //       { zh: '人员管理', url: 'sidenavigation/sidenavigation' },
+    //       { zh: '问题处理', url: 'pagination/pagination' },
+    //   ]
+    // },
       {
           id: 'myinfo',
           name: '我的信息',
           open: false,
+          openType:'null',
           pages: [
-              { zh: '读者信息', url: 'telescopic/telescopic' },
-              { zh: '借阅信息', url: 'linebreak/linebreak' },
-              { zh: '其他信息', url: 'pagination/pagination' },
+              { zh: '读者信息', url: 'MeInfo/MeInfo' },
+              { zh: '借阅信息', url: 'BorrowInfo/BorrowInfo' }
           ]
       },
       {
           id: 'mycomment',
-          name: '我的评论',
+          name: '我的分享',
           open: false,
-          // pages: [
-          // ]
-      },
-      {
-          id: 'identify',
-          name: '身份验证',
-          open: false,
+          openType:'mycomment',
           // pages: [
           // ]
       },
@@ -54,6 +50,7 @@ CustomPage({
           id: 'phonebind',
           name: '手机绑定',
           open: false,
+          openType:'getPhoneNumber',
           // pages: [
           // ]
       },
@@ -61,6 +58,7 @@ CustomPage({
           id: 'phonechange',
           name: '切换绑定',
           open: false,
+          openType:'changeBind',
           // pages: [
           // ]
       },
@@ -68,9 +66,11 @@ CustomPage({
           id: 'feedback',
           name: '问题反馈',
           open: false,
+          openType:'feedback',
           // pages: [
           // ]
       },
+  
     ]
     
   },
@@ -82,24 +82,7 @@ CustomPage({
   },
 
   getPhoneNumber(e) {
-    var _this = this
-    wx.showNavigationBarLoading()
-    console.log(app.globalData.token)
-    WXAPI.getPhoneNumber(app.globalData.token, e.detail.iv, e.detail.encryptedData)
-      .then(res => {
-        if (res.code === 1) {
-          _this.setData({
-            'user.info.mobil': res.data,
-            'user.info.wxmobile': true
-          })
-          app.showToast(res.msg,'success')
-        }
-        wx.hideNavigationBarLoading()
-      })
-      .catch(err => {
-        console.log('绑定手机:',err)
-        app.showErrorModal(err.msg)
-      })
+    
   },
 
   /**
@@ -130,6 +113,7 @@ CustomPage({
       }
     }
   },
+  
 
   kindToggle: function (e) {
         const id = e.currentTarget.id,
@@ -175,7 +159,46 @@ CustomPage({
             }
         }
     },
-
+  changeBind:function(){
+    wx.navigateTo({
+      url: '/pages/MyCode/login/login',
+    })
+  },
+  changeToMyShare:function(){
+    wx.navigateTo({
+      url: '/pages/MyCode/Me/MyShare/MyShare',
+    })
+  
+  },
+    getPhoneNumber(e) {
+      var _this = this
+      app.showMaskLoading('正在加载')
+      console.log(app.globalData.token)
+      WXAPI.getPhoneNumber(app.globalData.token, e.detail.iv, e.detail.encryptedData)
+        .then(res => {
+          console.log(res);
+          if (res.code === 1) {
+            _this.setData({
+              'user.info.mobile': res.data,
+              'user.info.wxmobile': true
+            })
+            app.showToast(res.msg,'success')
+          }
+          // wx.hideNavigationBarLoading()
+          app.hideMaskLoading()
+        })
+        .catch(err => {
+          console.log('绑定手机:',err)
+          app.showErrorModal(err.msg)
+        })
+      
+    },
+    toShowHaveNum:function () {
+      app.showToast('已绑定')
+    },
+    toAdmin:function(){
+      app.showToast('请先获取管理权限')
+    },
   /**
    * 生命周期函数--监听页面隐藏
    */

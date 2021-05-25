@@ -51,6 +51,109 @@
         {
           "name": "pages/MyCode/index/search/search",
           "pathName": "pages/MyCode/index/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/index",
+          "pathName": "pages/MyCode/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/search/showdetail",
+          "pathName": "pages/MyCode/index/search/showdetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/share/share",
+          "pathName": "pages/MyCode/index/share/share",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/Me",
+          "pathName": "pages/MyCode/Me/Me",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/guide/guide",
+          "pathName": "pages/MyCode/index/guide/guide",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Message/Message",
+          "pathName": "pages/MyCode/Message/Message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/share/share",
+          "pathName": "pages/MyCode/index/share/share",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/share/share",
+          "pathName": "pages/MyCode/index/share/share",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/MeInfo/MeInfo",
+          "pathName": "pages/MyCode/Me/MeInfo/MeInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/BorrowInfo/BorrowInfo",
+          "pathName": "pages/MyCode/Me/BorrowInfo/BorrowInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/Me",
+          "pathName": "pages/MyCode/Me/Me",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/Me/MyShare/MyShare",
+          "pathName": "pages/MyCode/Me/MyShare/MyShare",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
           "scene": null
         }
       ]

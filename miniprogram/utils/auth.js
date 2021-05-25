@@ -38,6 +38,7 @@ async function login() {
     wx.login({
       success: res => {
         WXAPI.login(res.code).then(res => {
+          // console.log('login',res.data);
           resolve(res.data) 
         }).catch(err => {
           reject(err)
@@ -80,7 +81,6 @@ async function loginSys(token){
 
     // 存在token，获取信息
     let result = await init().then(res => {
-      // console.log('存在token',res)
       // 执行相关登录方法即可
       let data = JSON.parse(utils.base64.decode(res.data))
       //console.log('userData:',data)

@@ -1,0 +1,36 @@
+<view class="page" data-weui-thime="{{theme}}">
+    <scroll-view scroll-y="{{true}}" class="self-scroll">
+    <mp-cells title="书名">
+            <mp-cell title="《{{title}}》" ext-class=""></mp-cell>     
+        </mp-cells>
+        
+    <mp-cells title="作者">
+            <mp-cell class="self-cell" title="{{list[0].ZRZ}}" ext-class=""></mp-cell>     
+        </mp-cells>
+
+    <mp-cells title="出版社">
+            <mp-cell class="self-cell" title="{{list[0].CBZ}}/{{list[0].CBRQ}}" ext-class=""></mp-cell>     
+        </mp-cells>
+
+
+    <mp-cells title="索书号">
+            <mp-cell class="self-cell" title="{{list[0].SSH}}" ext-class=""></mp-cell>     
+        </mp-cells>
+
+    <mp-cells title="ISBN">
+            <mp-cell class="self-cell" title="{{list[0].ISBN}}" ext-class=""></mp-cell>     
+        </mp-cells>
+
+    <mp-cells title="图书分类" footer="馆藏状态">
+            <mp-cell class="self-cell" title="{{list[0].WXLX}}" ext-class=""></mp-cell>     
+        </mp-cells>
+
+    <!-- <mp-cells title="馆藏状态""></mp-cells> -->
+        <view wx:for="{{list}}" wx:key="index">
+            <mp-cell class="self-cell" title="{{item.GCDMC}}" ext-class=""><view style="margin-left:5px">{{status[item.ZTBS]}}</view></mp-cell>     
+        </view>
+    </scroll-view>   
+
+
+
+</view>

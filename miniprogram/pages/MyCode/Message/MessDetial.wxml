@@ -1,0 +1,26 @@
+
+<view class="page" data-weui-thime="{{theme}}">
+    <scroll-view scroll-y="{{true}}" class="self-scroll">
+        <view class="weui-article__section">
+            <view class="weui-article__h2 title">
+                <view >
+                    {{title}}
+                </view>
+            </view>
+            <view class="weui-article__section">
+                <view class="weui-article__h3 time">发布时间：{{time}}</view>
+                <view class="weui-article__p text">
+                    <rich-text nodes="{{htmlSnip}}"></rich-text>
+                </view>
+            </view>
+        </view>
+        
+
+
+
+    </scroll-view>   
+
+
+
+</view>
+            

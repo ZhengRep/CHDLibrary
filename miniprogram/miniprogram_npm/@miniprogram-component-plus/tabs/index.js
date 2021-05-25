@@ -107,7 +107,7 @@ Component({
         tabUnderlineColor: { type: String, value: '#07c160' },
         tabActiveTextColor: { type: String, value: '#000000' },
         tabInactiveTextColor: { type: String, value: '#000000' },
-        tabBackgroundColor: { type: String, value: '#ffffff' },
+        // tabBackgroundColor: { type: String, value: '#ffffff' },
         activeTab: { type: Number, value: 0 },
         swipeable: { type: Boolean, value: true },
         animation: { type: Boolean, value: true },

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-cells": "@miniprogram-component-plus/cells/cells",
+    "mp-cell": "@miniprogram-component-plus/cell/cell"
+  },
+  "navigationBarTitleText": ""
+}

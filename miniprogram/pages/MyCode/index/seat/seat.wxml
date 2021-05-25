@@ -6,19 +6,68 @@
     bindchange="onChange"
     class="test"
     >
-        <block wx:for="{{vtabs}}" wx:key="title" >
+        <mp-sticky wx:if="{{click||hasReserve}}">
+                <button size="mini" type="primary" style="margin-left: 10px; margin-top: 5px;margin-bottom: 0;font-size:16px;">已选: {{clickroom}} {{clickrow+1}}排 {{clickcol+1}}列</button>
+        </mp-sticky>
+        <block wx:for="{{vtabs}}" wx:for-item="floor" wx:for-index="floorindex" wx:key="title" >
+    
+
             <mp-vtabs-content tabIndex="{{index}}">
-            <view class="vtabs-content-item" style="margin-bottom: {{vtabs.length - 1 === index ? 600 : 0}}px" bindtap="handleClick">
-                <image src="{{item.img}}" mode="widthFix"></image>
-                <view class="item-title">
-                {{item.title2}}
-                </view>
-                <view class="item-desc">
-                {{item.desc}}
-                </view>
+            <view class="vtabs-content-item" style="margin-bottom: {{vtabs.length - 1 === index ? 600 : 0}}px" >
+                <block wx:for="{{floor.room}}" wx:for-item="room" wx:for-index="roomindex" wx:key="*this">
+                    <view class="item-desc">{{room}}</view>
+
+                  
+                    <view class="seats-wrap" >
+                        <scroll-view scroll-x="{{true}}" class="self-scrollx">
+                            <view class="room-wrap"  wx:key="*this">
+    
+                                <view class="{{floor.seat[roomindex][2][rowindex] == 1?'seat-rowE1':'seat-row'}} {{floor.seat[roomindex][2][rowindex] == 2?'seat-rowE2':'seat-row'}}" wx:for="{{floor.seat[roomindex][0]}}" wx:for-index="rowindex" wx:for-item="seatrow" wx:key="*this">
+                                    <view class="seat" wx:for-item="seatcol" wx:for="{{floor.seat[roomindex][1]}}" wx:for-index="colindex" wx:key="*this">
+                                        <view 
+                                           id='seat-info'
+                                           class="{{floor.seat[roomindex][3][rowindex][colindex] == 1?'seat-emptyE1':'seat-empty'}} {{floor.seat[roomindex][3][rowindex][colindex] == 2? 'seat-none':'seat-empty'}} {{floor.seat[roomindex][3][rowindex][colindex] == 3? 'seat-noneE1':'seat-empty'}} {{click&&clickrow==rowindex&&clickroom==room&&clickcol==colindex?'click':''}} "
+                                           data-room='{{room}}' 
+                                           data-roomindex='{{roomindex}}' 
+                                           data-row='{{rowindex}}' 
+                                           data-col='{{colindex}}'
+                                           data-floorindex="{{floorindex}}" 
+                                           bindtap="clickSeat">
+                                        </view>
+                                        
+                                        
+                                    </view>    
+                                </view>
+    
+    
+                            </view>
+                        </scroll-view>
+                    </view>
+                </block>
+
             </view>
             </mp-vtabs-content>
         </block>
-        <view style="height: 1px;width: 100%"></view>
+        <view class="btn-wrap-other">
+            <view class="btn-wrap">
+                <view class="QR" style="width:90px">
+                    <button class="btn-left" bindtap="scanCodein" type="primary" style="width:90px;height:40px;line-height:40px;align-items:center" size="mini">
+                        扫 码
+                    </button>
+                </view>
+                <view class="clickon" style="width:90px">
+                    <button wx:if="{{toSumb}}" bindtap="toSumbmitReserve" class="btn-right" type="primary" style="width:90px;height:40px;line-height:40px;align-items:center" size="mini">
+                        预 约
+                    </button>
+                    <button wx:else class="btn-right" bindtap="toCancelReserve" type="primary" style="width:90px;height:40px;line-height:40px;align-items:center" size="mini">
+                        取 消
+                    </button>
+                </view>
+                
+            </view>
+         </view>   
     </mp-vtabs>
+    
 </view>
+
+

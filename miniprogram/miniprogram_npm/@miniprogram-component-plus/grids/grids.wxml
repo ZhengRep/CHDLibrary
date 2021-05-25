@@ -1,0 +1,33 @@
+<view class="weui-grids {{extClass}}">
+  <block wx:for="{{innerGrids}}" wx:key="index">
+
+    <view
+      class="weui-grid" 
+      target="{{item.target}}"
+      url="{{item.url}}"
+      open-type="{{item.openType}}"
+      app-id="{{item.appId}}"
+      path="{{item.path}}"
+      extra-data="{{item.extraData}}"
+      version="{{item.version}}"
+      hover-class="{{item.hoverClass}}"
+      hover-stop-propagation="{{item.hoverStopPropagation}}"
+      hover-start-time="{{item.hoverStartTime}}"
+      hover-stay-time="{{item.hoverStayTime}}"
+      bindsuccess="{{item.bindsuccess}}"
+      bindfail="{{item.bindfail}}"
+      bindcomplete="{{item.bindcomplete}}"
+      bindtap="isBind"
+      data-set="{{item.url}}"
+    >
+        <button wx:if="{{item.openType == 'getUserInfo'?true:false}}" class="self-button" open-type="{{item.openType}}" lang="zh_CN" bindtap="getUserProfile" size="mini"></button>
+        <button wx:if="{{item.openType == 'contact'?true:false}}" bindcontact="handleContact" class="self-button" open-type="{{item.openType}}"size="mini"></button>
+        <view class="weui-grid__icon">
+          <image class="weui-grid__icon_img" src="{{item.imgUrl}}" alt></image>
+        </view> 
+        <view class="weui-grid__label">{{item.text}}</view>
+     
+    </view>
+    
+  </block>
+</view>

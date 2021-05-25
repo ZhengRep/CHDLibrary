@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "mp-toptips": "@miniprogram-component-plus/toptips/toptips",
+    "mp-uploader": "@miniprogram-component-plus/uploader/uploader",
+    "mp-form-page": "@miniprogram-component-plus/form-page/form-page",
+    "mp-cells": "@miniprogram-component-plus/cells/cells",
+    "mp-cell": "@miniprogram-component-plus/cell/cell",
+    "mp-form": "@miniprogram-component-plus/form/form",
+    "mp-checkbox": "@miniprogram-component-plus/checkbox/checkbox",
+    "mp-dialog": "@miniprogram-component-plus/dialog/dialog",
+    "mp-checkbox-group": "@miniprogram-component-plus/checkbox-group/checkbox-group"
+  },
+  "navigationBarTitleText": "座位监督"
+}

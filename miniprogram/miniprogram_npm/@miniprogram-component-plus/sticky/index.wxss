@@ -1,0 +1,2 @@
+.weui-sticky{position:relative}
+.weui-sticky__fixed{position:fixed;right:10px;top:5px}

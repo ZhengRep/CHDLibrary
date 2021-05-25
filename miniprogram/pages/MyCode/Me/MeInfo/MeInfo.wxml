@@ -1,0 +1,77 @@
+<view class="page" weui-data-theme="{{theme}}">
+    <form wx:if="{{loadFinish}}">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.DZXM}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">学号</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.DZTM}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">学院</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.DWMC}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">专业</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.ZB}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">累借册数</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.LJCC}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">欠费金额</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.QKJE}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">办证日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ AllInfo.BZRQ}}
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">证件状态</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{ status[AllInfo.ZJZT]}}
+          </view>
+        </view> 
+        </view>
+      </view>
+  </form>
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{app.globalData.is_bind}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+
+
+</view>

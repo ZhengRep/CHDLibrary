@@ -25,10 +25,6 @@ App({
         },
         fail() {
           console.log('读取预拉取数据失败')
-          wx.showToast({
-            title: '无缓存数据',
-            icon: 'none'
-          })
         },
         complete() {
           console.log('结束读取')
@@ -64,6 +60,22 @@ App({
         }
       })
     })
+
+    //判断是否有用户信息
+    if(!that.globalData.hasUserInfo){
+      wx.getStorage({
+        key: 'userInfo',
+        success (res) {
+          console.log(res.data.nickName);
+          that.globalData.nickName=res.data.nickName
+          that.globalData.avatarUrl=res.data.avatarUrl
+          that.globalData.hasUserInfo=true
+        }
+      })
+      
+    }
+
+   //获取用户信息
 
     /**
      * 初次加载判断网络情况
@@ -132,9 +144,6 @@ App({
 
   
   onShow(opts) {
-    console.log('App Show', opts)
-    console.log('onshow opts,',opts);
-    // console.log(wx.getSystemInfoSync())
     this.globalData.launchOption = opts
   },
   onHide() {
@@ -161,9 +170,7 @@ App({
 
   async loginFunc(token) {
     let res = await AUTH.loginSys(token)
-    //console.log('[page:app loginFunc] res:', res)
     if(!res){
-      //console.log('暂时没有app数据')
       res = await AUTH.init()
     }
     this.globalData.is_bind = wx.getStorageSync('is_bind')
@@ -180,6 +187,11 @@ App({
     launchOption: undefined,
     is_bind: false,
     token: false,
+    hasUserInfo:false,
+    nickName:'',
+    avatarUrl:'',
+    // phoneNum:null,
+    // hasPhoneNum:false
   },
   util: utils,
 
@@ -250,10 +262,11 @@ App({
       duration: duration || 1000
     })
   },
-  showMaskLoading: function(title) {
+  showMaskLoading: function(title,duration) {
     wx.showLoading({
       title: title || '加载中',
-      mask: true
+      mask: true,
+      duration:duration||7000
     })
   },
   hideMaskLoading: function() {

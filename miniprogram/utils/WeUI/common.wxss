@@ -82,6 +82,6 @@ page {
   
   @media (prefers-color-scheme: dark) {
     page {
-      background-color: #1F1F1F;
+      background-color: #191919;
     }
   }

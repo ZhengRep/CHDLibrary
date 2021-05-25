@@ -2,7 +2,7 @@
     <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
             <icon class="weui-icon-search" type="search" size="12"></icon>
-            <input type="text" class="weui-search-bar__input" placeholder="{{placeholder}}" value="{{value}}" focus="{{focus}}" bindblur="inputBlur" bindfocus="inputFocus" bindinput="inputChange" />
+            <input type="text" confirm-type="search" class="weui-search-bar__input" placeholder="{{placeholder}}" value="{{value}}" focus="{{focus}}" bindblur="inputBlur" bindfocus="inputFocus" bindinput="inputChange" />
             <text class="weui-icon-clear" hover-class="weui-active" wx:if="{{value.length > 0}}" bindtap="clearInput"></text>
         </view>
         <label class="weui-search-bar__label" bindtap="showInput">
@@ -13,11 +13,21 @@
     <view wx:if="{{cancel && searchState}}" class="weui-search-bar__cancel-btn" bindtap="hideInput">{{cancelText}}</view>
 </view>
 
+<view class="res-body">
+    <mp-cells ext-class=" {{'searchbar-result ' + extClass}}" wx:if="{{searchState && result.length > 0}}">
+        <scroll-view scroll-y="{{true}}" bindscrolltolower="handleToLowersea" class="cell-scroll">
+            <mp-cell class="result" bindtap="selectResult" body-class="weui-cell_primary" data-index="{{index}}" wx:for="{{result}}" wx:key="index" hover>
+                <view>{{"《"+item.title+"》"}}</view>
+            </mp-cell>
+        </scroll-view>
+    </mp-cells>
+    <mp-cells  wx:else>
+        <view class="top50">搜索Top50</view>
+        <scroll-view scroll-y="{{true}}" bindscrolltolower="handleToLowerhis" class="cell-scroll-top">
+            <mp-cell class="result" body-class="weui-cell_primary" data-index="{{index}}" wx:for-index="Index" wx:for="{{history}}" wx:key="index">
+                <view>{{Index+1}}   {{item.searchdata}}</view>
+            </mp-cell>
+        </scroll-view>
+    </mp-cells>
 
-<mp-cells ext-class=" {{'searchbar-result ' + extClass}}" wx:if="{{searchState && result.length > 0}}">
-    <mp-cell class="result" bindtap="selectResult" body-class="weui-cell_primary" data-index="{{index}}" wx:for="{{result}}" wx:key="index" hover>
-        <view>
-            {{item.TM}}-{{item.ZRZ}}
-        </view>
-    </mp-cell>
-</mp-cells>
+</view>

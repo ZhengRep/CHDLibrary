@@ -1,1 +1,35 @@
-<!--miniprogram/pages/MyCode/index/guide/guide.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+
+  <view class='nav-list' style="margin-top:20px">
+    <view  bindtap="showDetail" hover-class='none' data-set="{{index}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key="*this">
+      <view class="nav-title">{{item.title}}</view>
+      <view class="nav-name"></view>
+      <!-- <text class='cuIcon-{{item.icon}}'></text> -->
+    </view>
+  </view>
+  <view class='cu-tabbar-height'></view>
+
+  <!-- 防止滚动穿透 --> 
+<view class="cu-modal bottom-modal {{bottomModel == true?'show ':' '}}" catchtouchmove="{{bottomModel == true?'true':'false'}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white flex justify-between">
+      <view class="action border-title">
+        <text class="cuIcon-title text-blue"></text>
+        <text class="text-xl text-bold text-blue">{{titledetail}}</text>
+      </view>
+      <view bindtap="hideModal" class='action text-red' >
+        <text class="cuIcon-close text-black text-xl text-bold" style="font-size:40rpx"></text>
+      </view>
+    </view>
+    <scroll-view scroll-y class="detail-panel margin-top sm-border text-left" style="height:500px" >
+      <view class="padding-xl" style="color:black">
+         <!-- <block wx:if="{{renderedByHtml}}"> -->
+          <rich-text nodes="{{htmlSnip}}"></rich-text>
+        <!-- </block> -->
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+
+</view>

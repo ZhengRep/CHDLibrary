@@ -1,0 +1,93 @@
+<wxs module="stringSub">
+    var sub = function(val) {
+        return val.substring(0,10)+" "+val.substring(10,18)
+    }
+    module.exports.sub = sub;
+</wxs>
+
+
+<view class="page" weui-data-theme="{{theme}}">
+    <scroll-view wx:if="{{loadFinish}}" scroll-y="{{true}}" class="self-scroll">
+        
+        <mp-cells title="待还书籍">
+            
+            <view class="card-wrap" wx:for="{{now}}" wx:key="*this" wx:for-item="nowbook">
+                <view class="title">
+                    <view >《{{nowbook.TSMC}}》</view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-2">
+                        <view class="title">条码号:</view>
+                        <view class="body">{{nowbook.TSTM}}</view>
+                    </view>
+                    <view class="item-row-3">
+                        <view class="title">索书号:</view>
+                        <view class="body">{{nowbook.SSH}}</view>
+                    </view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">借书日期:</view>
+                        <view class="body">{{stringSub.sub(nowbook.JSRQ)}}</view>
+                    </view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">应还日期:</view>
+                        <view class="body">{{stringSub.sub(nowbook.YHRQ)}}</view>
+                    </view>
+                </view>
+                <view wx:if="{{nowbook.XJBS==1}}" class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">续借日期:</view>
+                        <view class="body">{{stringSub.sub(nowbook.XJRQ)}}</view>
+                    </view>
+                </view>
+               
+            </view>
+
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{!now.length}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无待还书籍</view>
+            </view>
+        </mp-cells>
+        
+        <mp-cells title="借阅历史" >
+            <view class="card-wrap other-back" wx:for="{{history}}" wx:key="*this" wx:for-item="hisbook">
+                <view class="title">
+                    <view >《{{hisbook.TSMC}}》</view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">索书号:</view>
+                        <view class="body">{{hisbook.SSH}}</view>
+                    </view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">借书日期:</view>
+                        <view class="body">{{stringSub.sub(hisbook.JSRQ)}}</view>
+                    </view>
+                </view>
+                <view class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">还书日期:</view>
+                        <view class="body">{{stringSub.sub(hisbook.HSRQ)}}</view>
+                    </view>
+                </view>
+                <view wx:if="{{hisbook.XJBS==1}}" class="num-info">
+                    <view class="item-row-1">
+                        <view class="title">续借日期:</view>
+                        <view class="body">{{stringSub.sub(hisbook.XJRQ)}}</view>
+                    </view>
+                </view>
+
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:if="{{!history.length}}">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无借阅历史</view>
+            </view>
+            <view style="height:40px"></view>   
+        </mp-cells>
+    
+
+    </scroll-view>
+</view>

@@ -91,7 +91,8 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+const app = getApp()
+const WXAPI = require('../../../api/index')
 
 Component({
   options: {
@@ -120,6 +121,12 @@ Component({
       type: Function,
       value: null
     },
+    history: {
+      // 返回Promise的函数
+      // @ts-ignore
+      type: Array,
+      value: null
+    },
     throttle: {
       // 500ms内只会调用一次search函数
       type: Number,
@@ -132,10 +139,11 @@ Component({
     cancel: {
       type: Boolean,
       value: true
-    }
+    },
+  
   },
   data: {
-    result: [] // 搜索结果
+    result: [], // 搜索结果
 
   },
 
@@ -167,9 +175,9 @@ Component({
 
     // @ts-ignore
     inputFocus(e) {
-      // this.setData({
-      //     searchState: true
-      // })
+      this.setData({
+          searchState: true
+      })
       // @ts-ignore
       this.triggerEvent('focus', e.detail);
     },
@@ -179,7 +187,19 @@ Component({
       this.setData({
         focus: false
       });
-      this.triggerEvent('blur', e.detail);
+      
+      this.triggerEvent('blur', e.detail);//之前在上面
+      console.log('inputBlur',e);
+      if(e.detail.cursor != 0){
+        this.data.search(this.data.value,true).then(json => {
+          this.setData({
+            result: json
+          });
+          console.log('new result',json);
+        }).catch(err => {
+          console.error('search error', err);
+        });
+      }
     },
 
     showInput() {
@@ -191,7 +211,9 @@ Component({
 
     hideInput() {
       this.setData({
-        searchState: false
+        searchState: false,
+        result:[],
+        value:''
       });
       this.triggerEvent('cancel');
     },
@@ -199,34 +221,17 @@ Component({
     // @ts-ignore
     inputChange(e) {
       this.setData({
-        value: e.detail.value
+        value: e.detail.value,
+        result:[]
       });
       this.triggerEvent('input', e.detail);
-
-      if (Date.now() - this.lastSearch < this.data.throttle) {
-        return;
-      }
-
-      if (typeof this.data.search !== 'function') {
-        return;
-      }
-
-      this.lastSearch = Date.now();
-      this.timerId = setTimeout(() => {
-        this.data.search(this.data.value).then(json => {
-
-          
-          this.setData({
-            result: json
-          });
-        }).catch(err => {
-          console.error('search error', err);
-        });
-      }, this.data.throttle);
+      console.log('inputChange执行');
+      
     },
 
     // @ts-ignore
     selectResult(e) {
+      console.log('selectResult',e);
       const {
         index
       } = e.currentTarget.dataset;
@@ -235,7 +240,24 @@ Component({
         index,
         item
       });
-    }
+    },
+    handleToLowerhis:function(){
+      app.showToast('到底咯~')
+    },
+    handleToLowersea:function(){
+      this.data.search(this.data.value,false).then(json => {
+        this.setData({
+          result: json
+        });
+        console.log('new result',json);
+      }).catch(err => {
+        console.error('search error', err);
+      });
+
+    },
+
+
+
 
   }
 });

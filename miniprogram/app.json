@@ -16,12 +16,18 @@
     "pages/im/im",
     "pages/im/room/room",
     "pages/MyCode/index/book/book",
-    "pages/MyCode/index/consult/consult",
     "pages/MyCode/index/guide/guide",
     "pages/MyCode/index/search/search",
     "pages/MyCode/index/seat/seat",
     "pages/MyCode/index/share/share",
-    "pages/MyCode/login/login"
+    "pages/MyCode/login/login",
+    "pages/MyCode/index/search/showdetail",
+    "pages/MyCode/Me/MyShare/MyShare",
+    "pages/MyCode/Me/MeInfo/MeInfo",
+    "pages/MyCode/Me/BorrowInfo/BorrowInfo",
+    "pages/MyCode/Message/MessDetial",
+    "pages/MyCode/index/propose/propose",
+    "pages/MyCode/index/inspect/inspect"
   ],
   "window": {
     "navigationBarTextStyle": "@navigationBarTextStyle",
@@ -67,5 +73,4 @@
   "darkmode": true,
   "resizable": true,
   "style": "v2"
- 
 }

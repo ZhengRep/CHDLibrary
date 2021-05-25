@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-grids": "@miniprogram-component-plus/grids/grids"
+  },
   "navigationBarTitleText": "馆内引导"
 }

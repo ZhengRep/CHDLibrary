@@ -7,25 +7,25 @@
 
 .weui-tabs-bar__wrp {
     border-bottom: 1px solid var(--weui-BG-2);
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .weui-tabs-swiper {
     width: 100%;
-    /* height: 100%; */
     background-color: var(--weui-BG-2);
-    height: 350px;
+    height: calc(100vh - 5px);
 }
 
 .tab-content {
     /* height: 400px; */
+    /* height: 100%; */
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding: 20px;
+    padding:20px 10px;
 }
 
 .weui-tabs-bar__title {
@@ -50,3 +50,82 @@
     background-color: var(--weui-BG-2) !important;
     color: var(--weui-FG-0) !important;
 }
+
+.scroll-item{
+    width: 100%;
+    height: calc(100vh - 60px);
+    /* background-color: khaki; */
+}
+
+/* ==================
+         卡片
+ ==================== */
+
+ .cu-card{
+     border-bottom: 0.5px solid var(--weui-FG-31);
+     margin-bottom: 30px;
+     display: flex;
+     flex-direction: column;
+     padding: 0px 10px;
+     font-size: 16px;
+    }
+
+ .cu-maninfo{
+     display: flex;     
+ }
+.content{
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    height: 32px;
+}
+.cu-nick{
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    color: var(--weui-FG-0);
+    font-size: 16px;
+    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+.cu-time{
+    font-size: 12px;
+    line-height: 8px;
+    align-items: center;
+    padding-left: 8px;
+    color: var(--weui-FG-31);
+    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+ .share-content{
+    padding: 8px 0;
+    /* display: flex; */
+ }
+ .bookName.author.comment{
+     margin-top: 5px;
+ }
+ .self-text{
+    color: var(--weui-FG-0);
+    font-size: 16px;
+    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+ }
+
+ .cu-avatar{
+     width: 32px;
+     height: 32px;
+     border-radius: 16px;
+ }
+
+ .pic-wrap{
+     display: flex;
+     flex-direction: row;
+ }
+
+ .wrap2{
+     width: 50%;
+     height: 150px;
+ }
+
+ .wrap3{
+     width:33.3333%;
+     /* height: calc(33.333%vh)px; */
+     height: 100px;
+ }

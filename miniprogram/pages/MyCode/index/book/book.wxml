@@ -1,2 +1,55 @@
-<!--miniprogram/pages/MyCode/index/book/book.wxml-->
-<text>miniprogram/pages/MyCode/index/book/book.wxml</text>
+<view class="page" data-weui-theme="{{theme}}">
+         <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <scroll-view scroll-y="{{true}}" class="self-scroll">
+        <mp-form-page>
+            <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+                <mp-cells title="个人信息">
+                        <mp-cell prop="name" wx:if="{{is_teacher}}" title="称呼" ext-class="">
+                            {{user.name}}老师
+                        </mp-cell>
+
+                        <mp-cell prop="name" wx:else title="姓名" ext-class="">
+                            {{user.name}}
+                        </mp-cell>
+
+                        <mp-cell prop="num" wx:if="{{is_teacher}}" title="工号" ext-class="">
+                            {{user.id}}
+                        </mp-cell>
+
+                        <mp-cell prop="num" wx:else title="学号" ext-class="">
+                            {{user.id}}
+                        </mp-cell>
+
+                        <mp-cell prop="" wx:if="{{user.info.wxmobile}}" title="电话" ext-class="">
+                            {{user.info.mobile}}
+                        </mp-cell>
+
+                        <mp-cell prop="mobile" wx:else title="电话" ext-class="">
+                            <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+
+                        <mp-cell prop="note"  title="留言"  ext-class="">
+                                <input bindinput="formInputChange" data-field="note" maxlength="140" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+
+                        <mp-cell prop="address" title="捐赠地点" ext-class="">
+                            <input bindinput="formInputChange" data-field="address" maxlength="140" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+
+                    </mp-cells>
+
+                    <mp-cells title="捐赠图书书名及数量" footer="例如：高等数学(1册) 大学英语(2册)">
+                        <mp-cell has-header="{{false}}" has-footer="{{false}}" title="" ext-class="">
+                            <textarea bindblur="bindTextAreaBlur" class="weui-textarea" confirm-type='done' maxlength="140"  placeholder="请输入" style="height: 7em" />
+                            <view class="weui-textarea-counter">{{}}</view>
+                        </mp-cell>
+                    </mp-cells>
+
+            </mp-form>
+
+            <view slot="button">
+                <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+            </view>
+        </mp-form-page>
+    </scroll-view>
+</view>

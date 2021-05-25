@@ -1,6 +1,9 @@
 @import '../../../utils/colorui/icon.wxss';
 @import '../../../utils/WeUI/common.wxss';
-
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}
 page{
     --white: #ffffff;
     --pink: #e03997;
@@ -8,10 +11,7 @@ page{
   --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
 
-.page{
-    background-color: var(--weui-BG-2);
-    height: 100%;
-}
+
 
 .info_wrap{
     margin: 10px 5px;
@@ -22,10 +22,10 @@ page{
     font-size: 14px;
 }  
 .user-avatar {
-    width: 140rpx;
-    height: 140rpx;
+    width: 80px;
+    height: 80px;
     overflow: hidden;
-    border-radius: 70rpx;
+    border-radius: 40px;
     background-color: #aaa;
 }
 
@@ -192,4 +192,12 @@ page{
     border-bottom: 1px solid var(--weui-FG-3);
     -webkit-transition: opacity .3s;
     transition: opacity .3s
+  }
+
+  .self-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    opacity: 0;
   }

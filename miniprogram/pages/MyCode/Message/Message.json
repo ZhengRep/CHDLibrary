@@ -1,8 +1,10 @@
 {
   "disableScroll": true,
-
   "navigationBarTitleText": "讯息",
   "usingComponents": {
-    "mp-tabs": "@miniprogram-component-plus/tabs"
+    "mp-tabs": "@miniprogram-component-plus/tabs",
+    "mp-loading": "@miniprogram-component-plus/loading/loading",
+    "mp-cells": "@miniprogram-component-plus/cells/cells",
+    "mp-cell": "@miniprogram-component-plus/cell/cell"
   }
 }

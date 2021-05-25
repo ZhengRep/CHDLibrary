@@ -1,0 +1,17 @@
+@import '../../../../utils/WeUI/common.wxss';
+
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}
+form {
+    margin-top: 8px;
+  }
+  
+  .weui-cell__bd {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 0;
+    min-height: 15px;
+  }

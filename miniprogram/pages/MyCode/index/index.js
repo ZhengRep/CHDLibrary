@@ -1,120 +1,103 @@
 const { GRID_DEMO_URL } = getApp().globalData
 const app = getApp()
 const WXAPI = require('../../../api/index')
-Page({
+import CustomPage from '../../../utils/WeUI/CustomPage'
+
+CustomPage({
   data: {
     cardCur: 0,
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      userInfo: wx.getStorageSync('_user'),//app.globalData._user,
-      //后期考虑云数据库，考虑到教师端的操作
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }, {
-      id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
-    }],
+    userInfo: wx.getStorageSync('_user'),//app.globalData._user,
+    swiperList: [],
+  
     grids: [
       {
           imgUrl: app.globalData.iconTabbar+'search.png',
           url: '/pages/MyCode/index/search/search',
-          text: '图书查询'
+          text: '图书查询',
+          openType:'null'
       },
       {
           imgUrl: app.globalData.iconTabbar+'seat.png',
           url: '/pages/MyCode/index/seat/seat',
-          text: '座位预约'
+          text: '座位预约',
+          openType:'null'
       },
       {
           imgUrl: app.globalData.iconTabbar+'consult.png',
-          url: '/pages/MyCode/index/consult/consult',
-          text: '咨询反馈'
+          url: '',
+          text: '咨询反馈',
+          openType:'contact'
       },
       {
           imgUrl: app.globalData.iconTabbar+'guide.png',
           url: '/pages/MyCode/index/guide/guide',
-          text: '馆内引导'
+          text: '馆内引导',
+          openType:'null'
       },
       {
           imgUrl: app.globalData.iconTabbar+'share.png',
           url: '/pages/MyCode/index/share/share',
-          text: '评论分享'
+          text: '评论分享',
+          openType:'getUserInfo'
       },
       {
           imgUrl: app.globalData.iconTabbar+'book.png',
           url: '/pages/MyCode/index/book/book',
-          text: '捐书荐书'
+          text: '图书捐赠',
+          openType:'null'
+      },
+      {
+          imgUrl: app.globalData.iconTabbar+'inspect.png',
+          url: '/pages/MyCode/index/inspect/inspect',
+          text: '座位监督',
+          openType:'null'
+      },
+      {
+          imgUrl: app.globalData.iconTabbar+'propose.png',
+          url: '/pages/MyCode/index/propose/propose',
+          text: '图书推荐',
+          openType:'null'
       },
   ]
    
   },
-  onLoad() {
+  onLoad:async function(){
+    
+
     this.towerSwiper('swiperList');
-    const that = this 
+    const that = this; 
     // 登录前置检查
-    //await app.loginFunc(app.globalData.token)
-    // console.log('[page index] onload globalData:',app.globalData)
+    app.loginFunc(app.globalData.token);
     if (!app.globalData.token){
-      app.loginFunc()
+      await app.loginFunc()
     }
     if (app.globalData.is_bind !== true){
-      //未绑定门户认证，先跳转绑定页面
       app.showToast('请先进行身份认证')
+      //未绑定门户认证，先跳转绑定页面
       setTimeout(()=>{
         wx.navigateTo({
-          url: '/pages/more/login',
+          url: '/pages/MyCode/login/login',
         })
       },1000)
     }
 
-    
+    const db = wx.cloud.database()
+    db.collection('BannerImage').get()
+    .then(res=>{
+      this.setData({
+        swiperList:res.data,
+      })
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+
    
 
   },
-  
+ 
 
-  go: function(e) {
-    //console.log('[page:index] globalData:',app.globalData)
-    const that = this
 
-    // 1.判断当前应用是否可用，如果不可用，弹出不可用原因
-    const item = e.currentTarget.dataset.item
-    if (!item.usable) {
-      app.showToast(item.errMsg)
-      return
-    }
-
-    // 2.当前应用要求绑定，而用户为绑定，则弹出提示，并导航到绑定界面
-    if (!item.permissions.unauthorized && !app.globalData.is_bind) {
-      console.log('需要信息门户认证才能访问')
-      app.showToast('需要信息门户认证才能访问')
-      wx.navigateTo({
-        url: 'pages/MyCode/login/login'
-      })
-      return
-    }
-  },
   
   // 轮播图
   // cardSwiper

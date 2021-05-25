@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "mp-grids": "weui-miniprogram/grids/grids"
+    "mp-grids": "@miniprogram-component-plus/grids/grids"
   },
   "navigationBarTitleText": "CHDLibrary"
 }

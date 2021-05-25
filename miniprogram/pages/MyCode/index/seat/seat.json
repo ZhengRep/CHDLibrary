@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-vtabs": "@miniprogram-component-plus/vtabs",
-    "mp-vtabs-content": "@miniprogram-component-plus/vtabs-content"
+    "mp-vtabs-content": "@miniprogram-component-plus/vtabs-content",
+    "mp-sticky": "@miniprogram-component-plus/sticky"
   },
   "navigationBarTitleText": "座位预约"
 }

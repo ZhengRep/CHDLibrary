@@ -1,3 +1,9 @@
+@import '../../../../utils/WeUI/common.wxss';
+
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}
 .searchbar-result{
     margin-top: 0;
     font-size: 14px;

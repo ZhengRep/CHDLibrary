@@ -1,0 +1,52 @@
+<view class="page" data-weui-theme="{{theme}}">
+         <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <scroll-view scroll-y="{{true}}" class="self-scroll">
+
+        <mp-form-page>
+            <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+                <mp-cells title="书籍信息">
+                        <mp-cell prop="name" wx:if="{{is_teacher}}" title="称呼" ext-class="">
+                            {{user.name}}老师
+                        </mp-cell>
+
+                        <mp-cell prop="name" wx:else title="姓名" ext-class="">
+                            {{user.name}}
+                        </mp-cell>
+
+                        <mp-cell prop="num" wx:if="{{is_teacher}}" title="工号" ext-class="">
+                            {{user.id}}
+                        </mp-cell>
+
+                        <mp-cell prop="name" wx:else title="学号" ext-class="">
+                            {{user.id}}
+                        </mp-cell>
+
+                        <mp-cell prop="bookName" title="书名" ext-class="">
+                            <input bindinput="formInputChange" data-field="bookName" maxlength="140" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+
+                        <mp-cell prop="author" title="作者" ext-class="">
+                            <input bindinput="formInputChange" data-field="author" maxlength="140" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+                        
+                        <mp-cell prop="ISBN" title="ISBN" ext-class="">
+                            <input bindinput="formInputChange" type="number" data-field="ISBN" maxlength="140" class="weui-input" placeholder="请输入"/>
+                        </mp-cell>
+
+                    </mp-cells>
+
+                    <mp-cells title="推荐理由">
+                        <mp-cell has-header="{{false}}" has-footer="{{false}}" title="" ext-class="">
+                            <textarea bindblur="bindTextAreaBlur" class="weui-textarea" confirm-type='done' maxlength="140"  placeholder="请输入" style="height: 7em" />
+                            <view class="weui-textarea-counter">{{}}</view>
+                        </mp-cell>
+                    </mp-cells>
+
+            </mp-form>
+
+            <view slot="button">
+                <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+            </view>
+        </mp-form-page>
+    </scroll-view>
+</view>

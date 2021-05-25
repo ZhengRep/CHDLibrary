@@ -1,1 +1,6 @@
-/* miniprogram/pages/MyCode/index/book/book.wxss */
+@import '../../../../utils/WeUI/common.wxss';
+
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}

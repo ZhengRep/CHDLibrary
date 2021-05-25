@@ -88,15 +88,14 @@ CustomPage({
     console.log('Identify');
     WXAPI.bind(app.globalData.token, that.data.userid, that.data.passwd)
       .then(res => {
+        wx.setStorage({
+          data: that.data.userid,
+          key: 'userid',
+        })
         if(res.code ===1){
-          app.showToast('验证成功', 'success')
-          //app.initRequest()
+          app.showToast('验证成功', 'success',)
+          // app.initRequest()
           app.loginFunc().then(res => {
-            const pages = getCurrentPages()
-            let prevPage = pages[pages.length - 2]
-            prevPage.setData({
-              'refreshPage': true
-            })
             wx.navigateBack()
           })
           //

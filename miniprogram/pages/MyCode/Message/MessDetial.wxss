@@ -1,0 +1,25 @@
+@import '../../../utils/WeUI/common.wxss';
+
+.page{
+    background-color: var(--weui-BG-2);
+    height: 100%;
+}
+.self-scroll{
+    height: calc(100vh);
+}
+
+.title{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px;
+}
+.time{
+    display: flex;
+    justify-content: center;
+}
+.text{
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}

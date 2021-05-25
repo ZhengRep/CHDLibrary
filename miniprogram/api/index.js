@@ -1,15 +1,15 @@
 //封装网络请求
 const CONFIG = require('../config')
 const utils = require('../utils/util')
-const request = (url, method, data,flag) => {
+const request = (url, method, data,flag=true) => {
   const system = wx.getSystemInfoSync()
   let _url='';
   if(flag){
-      _url = CONFIG.api_buildEx;
-    }
-    else{
-      _url = CONFIG.api_build;
-    }
+    _url = CONFIG.api_build;
+  }else{
+    _url = CONFIG.api_buildEx;
+  }
+  // console.log('_url',url);
   return new Promise((resolve, reject,flag) => {
     wx.request({
       url:_url + url,
@@ -56,21 +56,20 @@ const request = (url, method, data,flag) => {
  module.exports = {
     request,
     init: (token) => {
-      console.log('init token');
       return request('/wxuser/init_token', 'post', {
         token: token
-      },false)
+      })
     },
     checkToken: (token) => {
       return request('/wxuser/check_token', 'post', {
         token
-      },false)
+      })
     },
     login: (code) => {
       console.log('api login start');
       return request('/wxuser/login', 'post', {
         code: code
-      },false)
+      })
     },
     // 绑定门户账号
     bind: (token, stuid, passwd) => {
@@ -79,33 +78,29 @@ const request = (url, method, data,flag) => {
         stuid: stuid,
         passwd: passwd
       }
-      return request('/wxuser/bind', 'post', utils.key(formData),false)
+      return request('/wxuser/bind', 'post', utils.key(formData))
+    },
+
+    getPhoneNumber: (token, iv, encryptedData) => {
+      let formData = {
+        token: token,
+        iv: iv,
+        encryptedData: encryptedData
+      }
+      return request('/wxuser/wxmobile', 'post', utils.key(formData))
     },
     
-    /**
-   * 个人信息模块
-   */
-  // 绑定手机号码
-  getPhoneNumber: (token, iv, encryptedData) => {
-    let formData = {
-      token: token,
-      iv: iv,
-      encryptedData: encryptedData
-    }
-    return request('/wxuser/wxmobile', 'post', utils.key(formData),false)
-  },
-    // 保存用户信息
-  setUserInfo: (token, iv, encryptedData) => {
-    let formData = {
-      token: token,
-      iv: iv,
-      encryptedData: encryptedData
-    }
-    return request('/wxuser/userInfo', 'post', utils.key(formData),false)
-  },
 
   //书籍查询
-  SearchBook:(KeyWord)=>{
-    return request('/searchbook?title='+KeyWord,'post',null,true)
+  SearchBook:(KeyWord,page)=>{
+    console.log('Search',KeyWord);
+    console.log('page',page);
+    return request('/library/searchbook?title='+KeyWord+'&page='+page+'&perpage=50','post',null)
   },
+  getSearchHistory:()=>{
+    return request('/library/getsearhistory','post')
+  },
+  getUserInfo:(userid)=>{
+    return request('/library/getuserinfo?user_id='+userid,'post')
+  }
 }

@@ -76,6 +76,8 @@
    --weui-FG-1: rgba(0, 0, 0, .5);
    --weui-FG-2: rgba(0, 0, 0, .3);
    --weui-FG-3: rgba(0, 0, 0, .1);
+   --weui-FG-30: rgba(0, 0, 0, .1);
+   --weui-FG-31: #aaaaaa;
    --weui-RED: #fa5151;
    --weui-ORANGE: #fa9d3b;
    --weui-YELLOW: #ffc300;
@@ -113,6 +115,8 @@
      --weui-FG-1: hsla(0, 0%, 100%, .5);
      --weui-FG-2: hsla(0, 0%, 100%, .3);
      --weui-FG-3: hsla(0, 0%, 100%, .05);
+     --weui-FG-31: hsla(0, 0%, 100%, .5);
+     --weui-FG-30: #1f1f1f;
      --weui-RED: #fa5151;
      --weui-ORANGE: #c87d2f;
      --weui-YELLOW: #cc9c00;
