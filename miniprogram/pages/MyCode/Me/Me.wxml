@@ -27,11 +27,11 @@
                 <text class="user-text">班级：{{user.more.bj}}</text>
             </view>
             <view class="info-bd" wx:else>
-                <view class="info-bd-left">
+                <!-- <view class="info-bd-left"> -->
                 <text class="user-text">工号：{{user.id}}</text>
                 <text class="user-text">学院：{{user.info.yxm}}</text>
                 <text class="user-text" wx:if="{{user.more.jysm}}">教研室：{{user.more.jysm}} {{user.more.zc}}</text>
-                </view>
+                <!-- </view> -->
             </view>
         </block>
         <navigator url="/pages/MyCode/login/login" wx:else style="width: 100%;">

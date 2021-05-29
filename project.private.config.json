@@ -155,6 +155,12 @@
           "pathName": "pages/MyCode/index/seat/seat",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/MyCode/index/seat/seat",
+          "pathName": "pages/MyCode/index/seat/seat",
+          "query": "",
+          "scene": null
         }
       ]
     }

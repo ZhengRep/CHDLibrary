@@ -2,6 +2,8 @@
 @import '../../../../utils/WeUI/common.wxss';
 page{
     --green: rgba(7,193,96);
+    --halfred:#FE94A7;
+    --red:#FF4F4F;
 }
 .page{
     background-color: var(--weui-BG-2);
@@ -125,9 +127,6 @@ page{
     border-radius: 6px;
 }
 
-.demo-block {
-    /* margin: 10px 0; */
-}
 
 button {
     font-size: 14px;
@@ -145,20 +144,17 @@ button {
     height: 100px;
 }
 .btn-wrap-other{
-    width: calc(100vw - 70px);
+    width: 100%;
     display: flex;
     position: fixed;
     bottom: 60px;
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
-    padding-left: 54px;
+    justify-content: center;
 }
 .btn-wrap{
     height: 40px;
     width: 180px;
-    /* background-color: var(--green); */
-    /* border-radius: 10px; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -171,5 +167,45 @@ button {
     width: 90px;
     height: 40px;
 }
-
-
+.seat-halfselected{
+    background-color: var(--halfred);
+    border: 0.3px solid var(--halfred);
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+}
+.seat-halfselectedE1{
+    background-color: var(--halfred);
+    border: 0.3px solid var(--halfred);
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+    margin-left: 30px;
+}
+.seat-selected{
+    background-color: var(--red);
+    border: 0.3px solid var(--red);
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+}
+.seat-selectedE1{
+    background-color: var(--red);
+    border: 0.3px solid var(--red);
+    height: 30px;
+    width: 30px;
+    border-radius: 6px;
+    margin-left: 30px;
+}
+.colorinfo-wrap{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-size: 12px;
+    align-items: center;
+}
+.colorinfo-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
