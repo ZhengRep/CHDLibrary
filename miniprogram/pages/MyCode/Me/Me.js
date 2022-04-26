@@ -189,6 +189,7 @@ CustomPage({
         })
         .catch(err => {
           console.log('绑定手机:',err)
+          app.hideMaskLoading()
           app.showErrorModal(err.msg)
         })
       

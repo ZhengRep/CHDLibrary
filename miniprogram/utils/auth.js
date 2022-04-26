@@ -83,7 +83,7 @@ async function loginSys(token){
     let result = await init().then(res => {
       // 执行相关登录方法即可
       let data = JSON.parse(utils.base64.decode(res.data))
-      //console.log('userData:',data)
+      // console.log('userData:',data)
       wx.setStorageSync('is_bind', data.is_bind)
       wx.setStorageSync('_user', data.user)
       wx.setStorageSync('_time', data.time)

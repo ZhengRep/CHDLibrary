@@ -59,8 +59,9 @@
             <block wx:for="{{list}}" wx:key="id">
                 <button class="self-btn" size="mini" wx:if="{{item.openType == 'mycomment'}}" bindtap="changeToMyShare"></button>
                 <button class="self-btn" size="mini" wx:if="{{item.openType == 'changeBind'}}" bindtap="changeBind"></button>
-                <button class="self-btn" size="mini" wx:if="{{item.openType == 'getPhoneNumber' && user.info.wxmobile}}" bindtap="toShowHaveNum"></button>
-                <button class="self-btn" size="mini" wx:if="{{item.openType == 'getPhoneNumber' && !user.info.wxmobile}}" open-type="{{item.openType}}" bindgetphonenumber="getPhoneNumber"></button>
+                <!-- <button class="self-btn" size="mini" wx:if="{{item.openType == 'getPhoneNumber' && user.info.wxmobile}}" bindtap="toShowHaveNum"></button> -->
+                <button class="self-btn" size="mini" wx:if="{{item.openType == 'getPhoneNumber'}}" open-type="{{item.openType}}" bindgetphonenumber="getPhoneNumber"></button>
+                <!-- <button class="self-btn" size="mini" wx:if="{{item.openType == 'getPhoneNumber' && !user.info.wxmobile}}" open-type="{{item.openType}}" bindgetphonenumber="getPhoneNumber"></button> -->
                 <button class="self-btn" size="mini" wx:if="{{item.openType == 'feedback'}}" open-type="{{item.openType}}"></button>
                 <view class="kind-list__item">
                     <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
